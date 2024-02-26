@@ -36,12 +36,7 @@ from launch_ros.substitutions import FindPackageShare
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.conditions import IfCondition, UnlessCondition
-from launch.substitutions import (
-    Command,
-    FindExecutable,
-    LaunchConfiguration,
-    PathJoinSubstitution,
-)
+from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
 
 
 def launch_setup(context, *args, **kwargs):
@@ -85,35 +80,16 @@ def launch_setup(context, *args, **kwargs):
         [FindPackageShare(description_package), "config", ur_type, "joint_limits.yaml"]
     )
     kinematics_params = PathJoinSubstitution(
-        [
-            FindPackageShare(description_package),
-            "config",
-            ur_type,
-            "default_kinematics.yaml",
-        ]
+        [FindPackageShare(description_package), "config", ur_type, "default_kinematics.yaml"]
     )
     physical_params = PathJoinSubstitution(
-        [
-            FindPackageShare(description_package),
-            "config",
-            ur_type,
-            "physical_parameters.yaml",
-        ]
+        [FindPackageShare(description_package), "config", ur_type, "physical_parameters.yaml"]
     )
     visual_params = PathJoinSubstitution(
-        [
-            FindPackageShare(description_package),
-            "config",
-            ur_type,
-            "visual_parameters.yaml",
-        ]
+        [FindPackageShare(description_package), "config", ur_type, "visual_parameters.yaml"]
     )
     script_filename = PathJoinSubstitution(
-        [
-            FindPackageShare("ur_client_library"),
-            "resources",
-            "external_control.urscript",
-        ]
+        [FindPackageShare("ur_client_library"), "resources", "external_control.urscript"]
     )
     input_recipe_filename = PathJoinSubstitution(
         [FindPackageShare("ur_robot_driver"), "resources", "rtde_input_recipe.txt"]
